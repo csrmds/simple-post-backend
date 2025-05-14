@@ -1,0 +1,27 @@
+{
+  "name": "backend-simple-post",
+  "version": "1.0.0",
+  "main": "loader.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "nodemon loader.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "dependencies": {
+    "bcrypt": "^6.0.0",
+    "body-parser": "^2.2.0",
+    "cloudinary": "^2.6.1",
+    "dotenv": "^16.5.0",
+    "express": "^5.1.0",
+    "mongoose": "^8.14.3",
+    "mongoose-aggregate-paginate-v2": "^1.1.4",
+    "mongoose-paginate-v2": "^1.9.0",
+    "multer": "^1.4.5-lts.2"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.10"
+  }
+}
