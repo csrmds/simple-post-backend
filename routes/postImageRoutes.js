@@ -12,7 +12,7 @@ const {
 
 
 const router= express.Router()
-const upload= multer({dest: './src/backend/files/temp/'})
+const upload= multer({dest: './files/temp/'})
 
 
 
