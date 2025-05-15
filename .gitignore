@@ -8,7 +8,7 @@
 
 # arquivos
 #/files/postImages/*
-/utils
+/dev-utils
 
 # local env files
 .env
