@@ -7,7 +7,7 @@
 .yarn/install-state.gz
 
 # arquivos
-/files/postImages
+/files/postImages/*
 /files/temp/
 /utils
 

@@ -4,7 +4,8 @@
   "main": "loader.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "node loader.js"
+    "start": "node loader.js",
+    "dev": "nodemon loader.js"
   },
   "keywords": [],
   "author": "",
