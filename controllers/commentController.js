@@ -28,8 +28,8 @@ const deleteComment = async (req, res) => {
     
     try {
         console.log("\n\n=======CONTROLLER Delete Comment=======\n")
-        console.log(commentId)
-        console.log('requisição: ', req.body.commentId, req.query.commentId, req.params.commentId)
+        // console.log(commentId)
+        // console.log('requisição: ', req.body.commentId, req.query.commentId, req.params.commentId)
 
         const responseLike = await Like.deleteMany( { foreignId: commentId })
 
@@ -49,7 +49,7 @@ const updateComment = async (req, res) => {
     }
 
     if (req.body.comment._id) commentId = new mongoose.Types.ObjectId(req.body.comment._id)
-    console.log("req.body.comment: ", req.body.comment)
+    //console.log("req.body.comment: ", req.body.comment)
 
     try {
         const response = await Comment.findByIdAndUpdate(commentId, req.body.comment, options)
@@ -62,7 +62,7 @@ const updateComment = async (req, res) => {
 }
 
 const getComments = async (req, res) => {
-    
+    console.log("\n\n--------GetComments Controller--------\nforeignId: ", foreignId)
 
     let pipeLine= []
     let commentId= null
@@ -82,8 +82,6 @@ const getComments = async (req, res) => {
             $match: { _id: commentId }
         })
     }
-
-    console.log("\n\n--------GetComments Controller--------\nforeignId: ", foreignId)
 
 
     try {
@@ -182,7 +180,7 @@ const getComments = async (req, res) => {
 
 
         const comments = await Comment.aggregate(pipeLine)
-        console.log("comments response: ",comments)
+        //console.log("comments response: ",comments)
         res.status(200).json(comments)
     } catch (error) {
         console.log("\nErro ao buscar comentarios: ", error)

@@ -1,5 +1,5 @@
 {
-  "name": "backend-simple-post",
+  "name": "simple-post-backend",
   "version": "1.0.0",
   "main": "loader.js",
   "scripts": {
