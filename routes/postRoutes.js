@@ -18,7 +18,7 @@ const router = express.Router()
 //DEFINIÇÃO DE ARMAZENAMENTO COM MULTER
 const storage = multer.diskStorage({
     destination: (req, file, cb) => {
-        cb(null, './src/backend/files/postImages/')
+        cb(null, './files/postImages/')
     },
     filename: (req, file, cb) => {
         cb(null, `${Date.now()}_${file.originalname}`)
