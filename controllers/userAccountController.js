@@ -87,7 +87,15 @@ const verifyGoogleAccountRegister = async (req, res) => {
 
     try {
         const userAccount= await UserAccount.findOne({ googleId: googleAccount.googleId })
-        console.log("userAccountResult: ",userAccount)
+        console.log("userAccountResult: ", {
+            _id: userAccount._id,
+            userName: userAccount.userName,
+            firtName: userAccount.firstName,
+            lastName: userAccount.lastName,
+            email: userAccount.email,
+            avatarImage: userAccount.avatarImage,
+            type: userAccount.type
+        })
         if (!userAccount || userAccount.length== 0) {
             console.log("faça aqui um cadastro do usuario google, depois direcione para home page")
             try {
