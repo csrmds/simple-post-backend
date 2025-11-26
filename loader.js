@@ -7,6 +7,7 @@ const commentRoutes= require('./routes/commentRoutes')
 const userAccountRoutes= require('./routes/userAccountRoutes')
 const likeRoutes= require('./routes/likeRoutes')
 const imagesRoutes= require('./routes/postImageRoutes')
+const routes= require('./routes/routes')
 const allowCors= require('./config/cors')
 const path= require('path')
 
@@ -19,15 +20,6 @@ app.use(express.json())
 app.use(express.urlencoded({ extended: true }));
 app.use(allowCors)
 
-//LOG PARA VERIFICAR OQ ESTÁ SENDO ENVIADO
-// app.use((req, res, next) => {
-//     console.log("Middleware LOG:");
-//     console.log("Headers:", req.headers);
-//     console.log("Body:", req.body);
-//     console.log("Query:", req.query);
-//     console.log("Params:", req.params);
-//     next();
-// });
 
 app.use('/api/useraccount', userAccountRoutes)
 app.use('/post', postRoutes)
@@ -36,6 +28,7 @@ app.use("/images", express.static(path.join(__dirname, "files", "postImages")));
 app.use("/images/avatar", express.static(path.join(__dirname, "files", "userAvatar")));
 app.use('/comment', commentRoutes)
 app.use('/like', likeRoutes)
+app.use('/wakeup', routes)
 
 
 const PORT= process.env.PORT || 5000

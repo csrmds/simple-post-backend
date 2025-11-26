@@ -9,9 +9,6 @@ const insertLike= async (req, res) => {
     }
 
     try {
-        console.log("\n\n=======LIKE CONTROLLER insert=======\n")
-        // console.log(like)
-        // console.log(req.body)
         const newLike= new Like(like)
         const savedLike= await newLike.save()
 
@@ -26,18 +23,12 @@ const checkLike= async (req, res) => {
     const {from, foreignId, userAccountId} = req.body.like
 
     try {
-        //console.log("\n\n=======LIKE CONTROLLER check=======\n")
-        //console.log('req.body: ', req.body)
-        //console.log('from, foreignId, userAccountId: ', from, foreignId, userAccountId)
         const response= await Like.findOne({
             from: from,
             foreignId: new mongoose.Types.ObjectId(foreignId),
             userAccountId: new mongoose.Types.ObjectId(userAccountId)
         })
 
-        //console.log("response: ", response)
-        //return !!response
-        //return response ? true : false
         res.status(200).json(response)
 
     } catch (err) {
@@ -48,9 +39,7 @@ const checkLike= async (req, res) => {
 
 const removeLike= async (req, res) => {
     console.log("\n\n=======LIKE CONTROLLER remove=======\n")
-    //console.log("req.body: ", req.body)
     const likeId= new mongoose.Types.ObjectId(req.body.likeId)
-    //console.log("likeID obj: ", likeId)
     
     try {
         const response= await Like.findByIdAndDelete(req.body.likeId)
@@ -61,23 +50,6 @@ const removeLike= async (req, res) => {
     }
 }
 
-// const listLikesByPost= async (req, res) => {
-//     try {
-//         console.log("\n\n=======LIKE CONTROLLER listLikesByPost=======\n")
-//         //console.log(req.body)
-
-//         const response= await Like.find({
-//             from: "post",
-//             foreignId: req.body.postId
-//         })
-
-//         res.status(200).json(response)
-
-//     } catch (err) {
-//         console.log("Erro ao listar likes: ", err)
-//         res.status(500).json({ message: "Erro ao listar likes:" });
-//     }
-// }
 
 const listLikesByPost = async (req, res) => {
     console.log("\n\n=======LIKE CONTROLLER listLikesByPost=======\n")
@@ -136,7 +108,6 @@ const listLikesByPost = async (req, res) => {
         )
 
         const likes= await Like.aggregate(pipeLine)
-        //console.log("Likes response: ", likes)
         res.status(200).json(likes)
         
     } catch (err) {
@@ -149,7 +120,6 @@ const listLikesByComment= async (req, res) => {
     try {
         console.log("\n\n=======LIKE CONTROLLER listLikesByComment=======\n")
         const commentId= new mongoose.Types.ObjectId(req.body.commentId)
-        //console.log("req.body: ", req.body)
 
         const response= await Like.find({
             from: "comment",

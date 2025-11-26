@@ -12,8 +12,6 @@ const url = process.env.BACKEND_URL
 
 
 const insertPostImage = async (req, res) => {
-    console.log("-----insertPostImage Controller-----")
-    //console.log(req.body)
     const postImage= {
         postId: new mongoose.Types.ObjectId(req.body.postId),
         address: req.body.address,
@@ -28,7 +26,6 @@ const insertPostImage = async (req, res) => {
     
 
     try {
-        //console.log("obejto antes de salvar: ", postImage)
         const image= new PostImage(postImage)
         const savedImage= await image.save()
         res.status(200).json(image)
@@ -40,7 +37,6 @@ const insertPostImage = async (req, res) => {
 
 
 const deletePostImage = async (req, res) => {
-    console.log("-----deletePostImage Controller-----")
 
     let imageId= ""
     let image= ""
@@ -80,20 +76,19 @@ const deletePostImage = async (req, res) => {
 }
 
 
-const updatePostImage = async (req, res) => {
-    console.log("-----updatePostImage Controller-----")
+// const updatePostImage = async (req, res) => {
+//     console.log("-----updatePostImage Controller-----")
 
-    try {
+//     try {
 
-    } catch(err) {
-        console.error("Não foi possível atualizar as imagens do post.", err)
-        res.status(500).json({message: "Não foi possível atualizar as imagens do post.", error: err})
-    }
-}
+//     } catch(err) {
+//         console.error("Não foi possível atualizar as imagens do post.", err)
+//         res.status(500).json({message: "Não foi possível atualizar as imagens do post.", error: err})
+//     }
+// }
 
 
 const getPostImage = async (req, res) => {
-    //console.log("-----getPostImages Controller-----")
 
     let postId= ""
     
@@ -115,7 +110,6 @@ const getPostImage = async (req, res) => {
 }
 
 const getImageById = async (req, res) => {
-    //console.log("-----getPostImages Controller-----")
 
     let imageId= ""
 
@@ -136,7 +130,6 @@ const getImageById = async (req, res) => {
 }
 
 const getLastImageOrder = async (req, res) => {
-    console.log("-----lastImageOrder postImageController-----")
     const postId= req.body.postId
 
     try {
@@ -154,7 +147,6 @@ const getLastImageOrder = async (req, res) => {
 module.exports = {
     insertPostImage,
     deletePostImage,
-    updatePostImage,
     getPostImage,
     getImageById,
     getLastImageOrder

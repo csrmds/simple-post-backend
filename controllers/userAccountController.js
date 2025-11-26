@@ -40,14 +40,12 @@ const getUserAccounts = async (req, res) => {
 }
 
 const getOneUserAccount = async (req, res) => {
-    //console.log('\n\n----CONTROLLER getOneUserAccount----\n')
     var resp= { error: false, message: "" }
     var search= {}
     if (Object.keys(req.body).length > 0) var search= req.body
 
     try {
         const userAccount= await UserAccount.findOne(search)
-        //console.log('userAccount: ', userAccount)
         if (!userAccount || Object.keys(userAccount).length== 0) {
             resp.error= true
             resp.message= "Não foi encontrado nenhum usuário"
@@ -61,7 +59,6 @@ const getOneUserAccount = async (req, res) => {
 }
 
 const verifyCredentials = async (req, res) => {
-    console.log('\n\n----CONTROLLER verifyCredentialsUserAccount----\n')
     var resp= { error: false, message: "" }
     var userCredentials= {}
     if (Object.keys(req.body).length > 0) var userCredentials= req.body
@@ -69,7 +66,6 @@ const verifyCredentials = async (req, res) => {
     try {
         const userAccount= await UserAccount.findOne({firstName: userCredentials.firstName})
         const check= await userAccount.validatePassword(userCredentials.password)
-        //console.log(userAccount, "typeOf: ", typeof(userAccount))
 
         res.status(200).json({userAccount, check})
     } catch (err) {
@@ -79,7 +75,6 @@ const verifyCredentials = async (req, res) => {
 }
 
 const verifyGoogleAccountRegister = async (req, res) => {
-    console.log('\n\n----CONTROLLER verifyGoogleAccountRegister----\n')
 
     var googleAccount= {}
     if (Object.keys(req.body).length > 0) var googleAccount= req.body
@@ -117,9 +112,6 @@ const verifyGoogleAccountRegister = async (req, res) => {
 }
 
 const passwordUpdate = async (req, res) => {
-    console.log('\n----CONTROLLER passwordUpdate----\n')
-
-    console.log("req.bodyL: ", req.body)
 
     const userId = new mongoose.Types.ObjectId(req.body.userId) 
     const salt = await bcrypt.genSalt(10)
