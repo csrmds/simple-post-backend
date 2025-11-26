@@ -1,9 +1,15 @@
 const express= require('express')
+const { mongoose } = require('mongoose')
 
 const router = express.Router()
 
-router.get('/', (req, res)=> {
-    res.send({messagage: 'mensagem de retorno OK'})
+router.get('/', async (req, res)=> {
+    const resp= await mongoose.connection.db.command({ ping: 1 })
+    res.send(
+        {
+            messagage: 'mensagem de retorno OK',
+            ping: resp
+        })
 })
 
 
